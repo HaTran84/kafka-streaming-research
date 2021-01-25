@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: evenOddProcessor
+      bindings:
+        evenOddProcessor-in-0:
+          destination: c4c_original_data_topic
+        evenOddProcessor-out-0:
+          destination: c4c_even_data_topic
+        evenOddProcessor-out-1:
+          destination: c4c_odd_data_topic
+      kafka:
+        binder:
+          brokers:
+            - 172.19.23.236:9092
+            - 172.19.23.236:9093
+            - 172.19.23.236:9094
+          auto-create-topics: true
+  application:
+    name: even-odd-streaming
+
+server:
+  port: 8181

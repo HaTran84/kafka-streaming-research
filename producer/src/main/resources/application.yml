@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: externalUserProducer
+      bindings:
+        externalUserProducer-out-0:
+          destination: c4c_original_data_topic
+      kafka:
+        binder:
+          brokers:
+            - 172.19.23.236:9092
+            - 172.19.23.236:9093
+            - 172.19.23.236:9094
+          auto-create-topics: true
+
+  application:
+    name: user-data-producer
+server:
+  port: 8180
