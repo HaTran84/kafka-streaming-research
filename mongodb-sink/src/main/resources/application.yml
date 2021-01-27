@@ -1,18 +1,25 @@
 spring:
   cloud:
     stream:
-      function:
-        definition: externalUserProducer
       bindings:
-        externalUserProducer-out-0:
-          destination: c4c_original_data_topic
+        input:
+          destination: c4c_even_data_topic
+
       kafka:
         binder:
           brokers:
             - 172.19.22.245:9092
             - 172.19.22.245:9093
             - 172.19.22.245:9094
-          auto-create-topics: true
+
+  data:
+    mongodb:
+      database: 'kafka-store'
+      host: 'localhost'
+      port: 27017
+      password: 'pAzzw0rd'
+      username: 'mongo-admin'
+      authentication-database: 'admin'
 
   kafka:
     bootstrap-servers:
@@ -20,7 +27,5 @@ spring:
       - 172.19.22.245:9093
       - 172.19.22.245:9094
 
-  application:
-    name: user-data-producer
-server:
-  port: 8180
+mongodb:
+  collection: 'external-user-even'

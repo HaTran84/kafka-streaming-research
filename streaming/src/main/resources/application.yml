@@ -13,10 +13,17 @@ spring:
       kafka:
         binder:
           brokers:
-            - 172.19.23.236:9092
-            - 172.19.23.236:9093
-            - 172.19.23.236:9094
+            - 172.19.22.245:9092
+            - 172.19.22.245:9093
+            - 172.19.22.245:9094
           auto-create-topics: true
+
+  kafka:
+    bootstrap-servers:
+      - 172.19.22.245:9092
+      - 172.19.22.245:9093
+      - 172.19.22.245:9094
+
   application:
     name: even-odd-streaming
 
